@@ -51,7 +51,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     // Verify admin status
     const verifyAdmin = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/auth/profile', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       const token = localStorage.getItem("token");
       if (!token) return;
       try {
-        const res = await fetch("http://localhost:4000/api/admin/plan-change-requests/count", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/plan-change-requests/count`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {

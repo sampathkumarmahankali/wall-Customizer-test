@@ -69,6 +69,8 @@ export default function UsersPage() {
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [actionLoading, setActionLoading] = useState<number | null>(null);
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -80,7 +82,7 @@ export default function UsersPage() {
         ...(roleFilter && roleFilter !== "all" && { role: roleFilter }),
       });
 
-      const response = await fetch(`http://localhost:4000/api/admin/users?${params}`, {
+      const response = await fetch(`${API_URL}/api/admin/users?${params}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -111,7 +113,7 @@ export default function UsersPage() {
       
       if (action === 'delete') {
         if (confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
-          const response = await fetch(`http://localhost:4000/api/admin/users/${userId}`, {
+          const response = await fetch(`${API_URL}/api/admin/users/${userId}`, {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -151,7 +153,7 @@ export default function UsersPage() {
   const handleUpdateUser = async (updatedUser: User) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:4000/api/admin/users/${updatedUser.id}`, {
+      const response = await fetch(`${API_URL}/api/admin/users/${updatedUser.id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
