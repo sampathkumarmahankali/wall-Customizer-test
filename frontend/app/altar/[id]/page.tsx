@@ -14,7 +14,7 @@ export default function AltarViewPage() {
   useEffect(() => {
     if (!id) return;
     setLoading(true);
-    fetch(`http://localhost:4000/api/session/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/session/${id}`)
       .then(res => res.json())
       .then(data => {
         setSession(data);
