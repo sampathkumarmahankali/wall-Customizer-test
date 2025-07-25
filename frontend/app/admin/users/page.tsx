@@ -113,7 +113,7 @@ export default function UsersPage() {
       
       if (action === 'delete') {
         if (confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
-          const response = await fetch(`${API_URL}/api/admin/users/${userId}`, {
+          const response = await fetch(`${API_URL}/admin/users/${userId}`, {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`,
