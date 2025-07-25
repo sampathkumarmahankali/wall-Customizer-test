@@ -83,7 +83,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       const token = localStorage.getItem("token");
       if (!token) return;
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/plan-change-requests/count`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/plan-change-requests/count`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {

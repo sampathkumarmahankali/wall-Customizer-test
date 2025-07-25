@@ -82,7 +82,7 @@ export default function UsersPage() {
         ...(roleFilter && roleFilter !== "all" && { role: roleFilter }),
       });
 
-      const response = await fetch(`${API_URL}/api/admin/users?${params}`, {
+      const response = await fetch(`${API_URL}/admin/users?${params}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -153,7 +153,7 @@ export default function UsersPage() {
   const handleUpdateUser = async (updatedUser: User) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${API_URL}/api/admin/users/${updatedUser.id}`, {
+      const response = await fetch(`${API_URL}/admin/users/${updatedUser.id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -73,7 +73,7 @@ export default function SharedSettingsPage() {
     setSearchResults([]);
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:4000/api/users?email=${encodeURIComponent(searchEmail)}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?email=${encodeURIComponent(searchEmail)}`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       const users = await res.json();
